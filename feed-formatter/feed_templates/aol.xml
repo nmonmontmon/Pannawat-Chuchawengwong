@@ -1,0 +1,25 @@
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+
+
+    <channel>
+        <title>{{playlist_metadata.title}}</title>
+        <description>{{playlist_metadata.description}}</description>
+        <language>en-us</language>
+
+        {% for item in items %}
+        <item>
+            <media:keywords>{{ item.tags }}</media:keywords>
+            <media:category>{{ item.category }}</media:category>
+            <media:title>{{ item.title }}</media:title>
+            <description>{{ item.description }}</description>
+            <guid>{{ item.key }}</guid>
+            <PubDate>{{ item.date_rss }}</PubDate>
+
+            <media:content content_id="{{ item.mediaid }}" url="{{ item.highest_quality_url }}" bitrate="24583"
+                           fileSize="231780091" duration="{{ item.duration }}" type="video"/>
+            <media:thumbnail url="{{ item.image }}" width="1"/>
+        </item>
+        {% endfor %}
+
+    </channel>
+</rss>
